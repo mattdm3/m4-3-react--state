@@ -32,6 +32,16 @@ render(<>
 </>)
 ```
 
+ANSWER: 
+```jsx
+const BlueButton = styled.(Button)`
+  background: #2B00D7;
+  color: #FFF;
+`
+```
+
+
+
 ---
 
 ## Exercise
