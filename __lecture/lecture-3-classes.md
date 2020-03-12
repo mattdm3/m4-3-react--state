@@ -12,8 +12,8 @@ There have been a few iterations. Until quite recently, the main way to create c
 
 ```jsx live=true
 class Counter extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       count: 0,
@@ -59,8 +59,12 @@ It's important to be aware of classes, since many online resources will use them
 # Cheatsheet
 
 ```jsx
+
+// NEW WAY
 const [count, setCount] = React.useState(0);
 
+
+//OLD WAY 
 // Initialization
 React.useState(0) === this.state = { count: 0 }
 
@@ -100,7 +104,7 @@ class Temperature extends React.Component {
 
 render(<Temperature />)
 ```
-
+Answer: 37
 ---
 
 
@@ -129,6 +133,7 @@ class Temperature extends React.Component {
 
 render(<Temperature initialT={-10} />)
 ```
+Answer: 27
 
 ---
 

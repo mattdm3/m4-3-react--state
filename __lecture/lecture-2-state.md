@@ -10,9 +10,11 @@ State is _dynamic data_. Things that change.
 
 ## Example
 
+this is a new hook
+
 ```jsx live=true
 const Counter = () => {
-  const [count, setCount] = React.useState(0);
+  const [count, setCount] = React.useState(0); // 0 is the initial value
 
   return (
     <>
@@ -245,6 +247,36 @@ const SearchResults = () => {
   // ??
 }
 ```
+ANSWER
+
+```jsx
+const App = () => {
+  const [searchTerm, setSearchTerm] = React.useState('');
+
+  return (
+    <>
+      <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+      <SearchResults />
+    </>
+  )
+}
+
+const SearchInput = ({searchTerm, setSearchTerm}) => {
+  return (
+    <input
+      type="text"
+      value={searchTerm}
+      onChange={(ev) => {
+        setSearchTerm(ev.target.value);
+      }}
+    />
+  );
+}
+
+const SearchResults = ({searchTerm}) => {
+  // ??
+}
+```
 
 ---
 
@@ -277,6 +309,33 @@ const App = () => {
       The current count is: ???
 
       <Counter />
+    </>
+  )
+}
+
+render(<App />)
+```
+
+my work: 
+```jsx live=true
+const Counter = ({count, setCount}) => {
+  
+
+  return (
+    <>
+      <button onClick={() => setCount(count + 1)}>
+        Increment
+      </button>
+    </>
+  )
+};
+
+const App = () => {
+  const [count, setCount] = React.useState(0);
+  return (
+    <>
+      The current count is: {count}
+      <Counter count={count} setCount={setCount} />
     </>
   )
 }
@@ -329,6 +388,51 @@ const App = () => {
 render(<App />)
 ```
 
+ANSEWR 
+
+```jsx live=true
+const FavouriteFood = ({ setFood }) => {
+  return (
+    <>
+      <label>
+        <input
+          type="radio"
+          name="food"
+          value="pizza"
+          onChange={() => setFood("pizza")}
+        />
+        Pizza
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="food"
+          value="broccoli"
+          onChange={() => setFood("broccoli")}
+        />
+        Broccoli
+      </label>
+    </>
+  );
+};
+
+
+const App = () => {
+
+  const [food, setFood] = React.useState("");
+
+  return (
+    <>
+      My favourite food is: {food}
+      <br />
+      <br />
+      <FavouriteFood food={food} setFood={setFood} />
+    </>
+  );
+}
+
+render(<App />)
+```
 ---
 
 ### Conditional rendering
